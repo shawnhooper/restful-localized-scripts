@@ -1,4 +1,4 @@
-# RESTFul Localized Scripts #
+# RESTful Localized Scripts #
 **Contributors:** shooper  
 **Donate link:** https://shawnhooper.ca/  
 **Tags:** javascript, i18n, api  
