@@ -1,7 +1,7 @@
-=== WPML REST API ===
+=== Scripts at REST ===
 Contributors: shooper
 Donate link: http://shawnhooper.ca/
-Tags: wpml, api
+Tags: javascript, i18n, api
 Requires at least: 4.4
 Tested up to: 4.4.2
 Stable tag: trunk

@@ -1,7 +1,7 @@
-# WPML REST API #
+# Scripts at REST #
 **Contributors:** shooper  
 **Donate link:** http://shawnhooper.ca/  
-**Tags:** wpml, api  
+**Tags:** javascript, i18n, api  
 **Requires at least:** 4.4  
 **Tested up to:** 4.4.2  
 **Stable tag:** trunk  
@@ -17,7 +17,7 @@ Adds links to posts in other languages into the results of a WP REST API query f
 ## Screenshots ##
 
 ### 1. This screenshot shows an excerpt of the JSON returned by the WP REST API when a page has translations available ###
-![This screenshot shows an excerpt of the JSON returned by the WP REST API when a page has translations available](http://s.wordpress.org/extend/plugins/wpml-rest-api/screenshot-1.png)
+![This screenshot shows an excerpt of the JSON returned by the WP REST API when a page has translations available](http://s.wordpress.org/extend/plugins/scripts-at-rest/screenshot-1.png)
 
 
 ## Changelog ##

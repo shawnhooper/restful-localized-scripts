@@ -1,6 +1,6 @@
 
 {
-  "name": "wpml-rest-api",
+  "name": "scripts-at-rest",
   "version": "0.0.0",
   "main": "Gruntfile.js",
   "author": "Shawn Hooper",
