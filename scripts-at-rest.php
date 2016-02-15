@@ -13,9 +13,12 @@ add_action('rest_api_init', 'scriptsatrest_init', 1000);
 function scriptsatrest_init() {
 	$restfulLocalizedScripts = new Restful_Localized_Scripts();
 	$restfulLocalizedScripts->register_routes();
+
 }
 
 class Restful_Localized_Scripts extends WP_REST_Controller {
+
+	public $allowed_scripts = array();
 
 	/**
 	 * Register the routes for the objects of the controller.
@@ -64,10 +67,13 @@ class Restful_Localized_Scripts extends WP_REST_Controller {
 		$items = $wp_scripts->registered; //do a query, call another class, etc
 
 		$data = array();
+		$allowed = apply_filters('allowed_restful_localized_scripts', $this->allowed_scripts);
 		foreach( $items as $item ) {
-			$itemdata = $this->prepare_item_for_response( $item, $request );
-			if ($itemdata) {
-				$data[$item->handle] = $itemdata;
+			if (in_array($item->handle, $allowed) || $allowed === true) {
+				$itemdata = $this->prepare_item_for_response( $item, $request );
+				if ($itemdata) {
+					$data[$item->handle] = $itemdata;
+				}
 			}
 		}
 
@@ -83,6 +89,7 @@ class Restful_Localized_Scripts extends WP_REST_Controller {
 	public function get_item( $request ) {
 		//get parameters from request
 		$params = $request->get_params();
+		$allowed = apply_filters('allowed_restful_localized_scripts', $this->allowed_scripts);
 
 		if (isset($params[0])) {
 			global $wp_scripts;
@@ -92,21 +99,17 @@ class Restful_Localized_Scripts extends WP_REST_Controller {
 
 			foreach( $wp_scripts->registered as $script ) {
 				if ($script->handle == $params[0]) {
+
+					if (!in_array($params[0], $allowed) && $allowed !== true) {
+						return new WP_Error( 'code', __( 'Script not authorized to be returned via REST API endpoint. Add script handle with allowed_restful_localized_scripts filter.', 'restful-localized-scripts' ), $params[0] );
+					}
+
 					return new WP_REST_Response( $this->prepare_item_for_response( $script, $request ), 200 );
 				}
 			}
-			return new WP_Error( 'code', __( 'No script with the requested handle can be found', 'restful-localized-scripts' ) );
 		}
 
-		$item = array();//do a query, call another class, etc
-		$data = $this->prepare_item_for_response( $item, $request );
-
-		//return a response or error based on some conditional
-		if ( 1 == 1 ) {
-			return new WP_REST_Response( $data, 200 );
-		}else{
-			return new WP_Error( 'code', __( 'No script with the requested handle can be found', 'restful-localized-scripts' ) );
-		}
+		return new WP_Error( 'code', __( 'No script with the requested handle can be found', 'restful-localized-scripts' ) );
 	}
 
 
