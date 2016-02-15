@@ -27,11 +27,11 @@ By default, no scripts are allowed to be returned by the API.
 
 To specify specific scripts that are allowed to be returned via the API:
 
-```add_filter('allowed_restful_localized_scripts', function($allowed) {
+<pre>add_filter('allowed_restful_localized_scripts', function($allowed) {
 	array_push($allowed, 'my_script_name');
 	array_push($allowed, 'my_second_script_name');
 	return $allowed;
-});```
+});</pre>
 
 To allow all scripts to be returned via the API:
 
