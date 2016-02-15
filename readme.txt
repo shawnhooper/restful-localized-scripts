@@ -14,6 +14,11 @@ WP REST API enhancement to return JSON arrays containing localized strings regis
 
 WP REST API enhancement to return JSON arrays containing localized strings registered with WordPress' wp_localize_script() function
 
+== Usage ==
+
+1. Install & Activate Plugin
+2. Go to endpoint:
+
 == Changelog ==
 
 = 1.0 =

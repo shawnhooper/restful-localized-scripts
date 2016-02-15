@@ -3,7 +3,7 @@
 /*
 Plugin Name: RESTful Localized Scripts
 Version: 1.0
-Description:
+Description: WP REST API enhancement to return JSON arrays containing localized strings registered with WordPress' wp_localize_script() function
 Author: Shawn Hooper
 Author URI: https://profiles.wordpress.org/shooper
 */
@@ -11,11 +11,11 @@ Author URI: https://profiles.wordpress.org/shooper
 add_action('rest_api_init', 'scriptsatrest_init', 1000);
 
 function scriptsatrest_init() {
-	$scriptsAtRest = new Scripts_At_REST();
-	$scriptsAtRest->register_routes();
+	$restfulLocalizedScripts = new Restful_Localized_Scripts();
+	$restfulLocalizedScripts->register_routes();
 }
 
-class Scripts_At_REST extends WP_REST_Controller {
+class Restful_Localized_Scripts extends WP_REST_Controller {
 
 	/**
 	 * Register the routes for the objects of the controller.
@@ -23,7 +23,7 @@ class Scripts_At_REST extends WP_REST_Controller {
 	public function register_routes() {
 		$version = '1';
 		$namespace = 'shawnhooper/v' . $version;
-		$base = 'scripts';
+		$base = 'localized';
 		register_rest_route( $namespace, '/' . $base, array(
 			array(
 				'methods'         => WP_REST_Server::READABLE,
@@ -57,7 +57,12 @@ class Scripts_At_REST extends WP_REST_Controller {
 	public function get_items( $request ) {
 		global $wp_scripts;
 
+		if ($wp_scripts === null) {
+			$wp_scripts = wp_scripts();
+		}
+
 		$items = $wp_scripts->registered; //do a query, call another class, etc
+
 		$data = array();
 		foreach( $items as $item ) {
 			$itemdata = $this->prepare_item_for_response( $item, $request );
@@ -80,8 +85,10 @@ class Scripts_At_REST extends WP_REST_Controller {
 		$params = $request->get_params();
 
 		if (isset($params[0])) {
-			$handle = $params[0];
 			global $wp_scripts;
+			if ($wp_scripts === null) {
+				$wp_scripts = wp_scripts();
+			}
 
 			foreach( $wp_scripts->registered as $script ) {
 				if ($script->handle == $params[0]) {
