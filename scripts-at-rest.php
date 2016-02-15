@@ -1,7 +1,7 @@
 <?php
 
 /*
-Plugin Name: Scripts at REST
+Plugin Name: RESTful Localized Scripts
 Version: 1.0
 Description:
 Author: Shawn Hooper
@@ -94,7 +94,7 @@ class Scripts_At_REST extends WP_REST_Controller {
 					return new WP_REST_Response( $this->prepare_item_for_response( $script, $request ), 200 );
 				}
 			}
-			return new WP_Error( 'code', __( 'No script with the requested handle can be found', 'scripts-at-rest' ) );
+			return new WP_Error( 'code', __( 'No script with the requested handle can be found', 'restful-localized-scripts' ) );
 		}
 
 		$item = array();//do a query, call another class, etc
@@ -104,7 +104,7 @@ class Scripts_At_REST extends WP_REST_Controller {
 		if ( 1 == 1 ) {
 			return new WP_REST_Response( $data, 200 );
 		}else{
-			return new WP_Error( 'code', __( 'No script with the requested handle can be found', 'scripts-at-rest' ) );
+			return new WP_Error( 'code', __( 'No script with the requested handle can be found', 'restful-localized-scripts' ) );
 		}
 	}
 

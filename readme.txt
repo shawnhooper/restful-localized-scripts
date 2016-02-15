@@ -1,6 +1,6 @@
-=== Scripts at REST ===
+=== RESTFul Localized Scripts ===
 Contributors: shooper
-Donate link: http://shawnhooper.ca/
+Donate link: https://shawnhooper.ca/
 Tags: javascript, i18n, api
 Requires at least: 4.4
 Tested up to: 4.4.2
@@ -8,15 +8,11 @@ Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Adds links to posts in other languages into the results of a WP REST API query for sites running the WPML plugin.
+WP REST API enhancement to return JSON arrays containing localized strings registered with WordPress' wp_localize_script() function
 
 == Description ==
 
-Adds links to posts in other languages into the results of a WP REST API query for sites running the WPML plugin.
-
-== Screenshots ==
-
-1. This screenshot shows an excerpt of the JSON returned by the WP REST API when a page has translations available
+WP REST API enhancement to return JSON arrays containing localized strings registered with WordPress' wp_localize_script() function
 
 == Changelog ==
 

@@ -1,6 +1,6 @@
 
 {
-  "name": "scripts-at-rest",
+  "name": "restful-localized-scripts",
   "version": "0.0.0",
   "main": "Gruntfile.js",
   "author": "Shawn Hooper",
