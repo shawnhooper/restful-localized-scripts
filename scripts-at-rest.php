@@ -10,12 +10,6 @@ Author URI: https://profiles.wordpress.org/shooper
 
 add_action('rest_api_init', 'scriptsatrest_init', 1000);
 
-add_action('init', function() {
-	wp_register_script('shawnscript', '/wp-includes/js/heartbeatx.min.js');
-	wp_localize_script('shawnscript', 'localized', array('hi' => 'bye'));
-	wp_enqueue_script('shawnscript');
-});
-
 function scriptsatrest_init() {
 	$scriptsAtRest = new Scripts_At_REST();
 	$scriptsAtRest->register_routes();
