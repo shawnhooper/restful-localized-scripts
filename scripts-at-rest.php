@@ -69,7 +69,7 @@ class Restful_Localized_Scripts extends WP_REST_Controller {
 		$data = array();
 		$allowed = apply_filters('allowed_restful_localized_scripts', $this->allowed_scripts);
 		foreach( $items as $item ) {
-			if (in_array($item->handle, $allowed) || $allowed === true) {
+			if ( true === $allowed || in_array($item->handle, $allowed)  ) {
 				$itemdata = $this->prepare_item_for_response( $item, $request );
 				if ($itemdata) {
 					$data[$item->handle] = $itemdata;
@@ -100,7 +100,7 @@ class Restful_Localized_Scripts extends WP_REST_Controller {
 			foreach( $wp_scripts->registered as $script ) {
 				if ($script->handle == $params[0]) {
 
-					if (!in_array($params[0], $allowed) && $allowed !== true) {
+					if ( true != $allowed && !in_array($params[0], $allowed) ) {
 						return new WP_Error( 'code', __( 'Script not authorized to be returned via REST API endpoint. Add script handle with allowed_restful_localized_scripts filter.', 'restful-localized-scripts' ), $params[0] );
 					}
 
@@ -139,3 +139,4 @@ class Restful_Localized_Scripts extends WP_REST_Controller {
 		return false;
 	}
 }
+
