@@ -39,5 +39,8 @@ To allow all scripts to be returned via the API:
 
 == Changelog ==
 
+= 1.0.1 (2022-05-31) =
+* Update build tool dependencies to fix CVE-2022-1537, CVE-2022-0436 and CVE-2020-7729
+
 = 1.0 =
 * First release.

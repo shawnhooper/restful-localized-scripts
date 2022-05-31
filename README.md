@@ -1,5 +1,5 @@
 # RESTful Localized Scripts #
-**Contributors:** shooper  
+**Contributors:** [shooper](https://profiles.wordpress.org/shooper/)  
 **Donate link:** https://shawnhooper.ca/  
 **Tags:** javascript, i18n, api  
 **Requires at least:** 4.4  
@@ -38,6 +38,9 @@ To allow all scripts to be returned via the API:
 `add_filter('allowed_restful_localized_scripts', '__return_true');`
 
 ## Changelog ##
+
+### 1.0.1 (2022-05-31) ###
+* Update build tool dependencies to fix CVE-2022-1537, CVE-2022-0436 and CVE-2020-7729
 
 ### 1.0 ###
 * First release.

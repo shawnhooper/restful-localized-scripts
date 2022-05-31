@@ -101,7 +101,7 @@ class Restful_Localized_Scripts extends WP_REST_Controller {
 				if ($script->handle == $params[0]) {
 
 					if ( true != $allowed && !in_array($params[0], $allowed) ) {
-						return new WP_Error( 'code', __( 'Script not authorized to be returned via REST API endpoint. Add script handle with allowed_restful_localized_scripts filter.', 'restful-localized-scripts' ), $params[0] );
+						return new WP_Error( 'code', __( 'Script not authorized to be returned via REST API endpoint. Add script handle with allowed_restful_localized_scripts filter.', 'restful-localized-scripts', 'wpcli-clean-multisitedb' ), $params[0] );
 					}
 
 					return new WP_REST_Response( $this->prepare_item_for_response( $script, $request ), 200 );
@@ -109,7 +109,7 @@ class Restful_Localized_Scripts extends WP_REST_Controller {
 			}
 		}
 
-		return new WP_Error( 'code', __( 'No script with the requested handle can be found', 'restful-localized-scripts' ) );
+		return new WP_Error( 'code', __( 'No script with the requested handle can be found', 'restful-localized-scripts', 'wpcli-clean-multisitedb' ) );
 	}
 
 
